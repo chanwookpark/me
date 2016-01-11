@@ -24,3 +24,4 @@
 | secret | 시크릿 | http://developer.naver.com/wiki/pages/tut_oauth |
 | scope | 범위 | |
 | revoke | 파기하다 | |
+| credential | 자격증명 | https://developers.google.com/youtube/registering_an_application?hl=ko |
