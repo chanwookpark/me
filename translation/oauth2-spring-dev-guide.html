@@ -10,19 +10,19 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
 </head>
 <body class="article">
-<!-- Facebook Plugin -->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.5&appId=1774801572752986";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<!-- Facebook Plugin -->
-
+  <!-- Facebook Plugin -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.5&appId=1774801572752986";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <!-- Facebook Plugin -->
 <div id="header">
 <h1>OAuth 2 개발자 가이드</h1>
 <div class="details">
@@ -316,13 +316,13 @@ JDBC  서비스의 스키마는 라이브러리에 패키징되어 있지 않다
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">   @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests().antMatchers("/login").permitAll().and()
-        // default protection for all resources (including /oauth/authorize)
-            .authorizeRequests().anyRequest().hasRole("USER")
-        // ... more configuration, e.g. for form login
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">protected</span> <span class="type">void</span> configure(HttpSecurity http) <span class="directive">throws</span> <span class="exception">Exception</span> {
+  http
+    .authorizeRequests().antMatchers(<span class="string"><span class="delimiter">&quot;</span><span class="content">/login</span><span class="delimiter">&quot;</span></span>).permitAll().and()
+      <span class="comment">// default protection for all resources (including /oauth/authorize)</span>
+    .authorizeRequests().anyRequest().hasRole(<span class="string"><span class="delimiter">&quot;</span><span class="content">USER</span><span class="delimiter">&quot;</span></span>)
+      <span class="comment">// ... more configuration, e.g. for form login</span>
     }</code></pre>
 </div>
 </div>
@@ -447,11 +447,11 @@ JDBC  서비스의 스키마는 라이브러리에 패키징되어 있지 않다
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">        @Override
-        public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-            oauthServer.tokenKeyAccess("isAnonymous() || hasAuthority('ROLE_TRUSTED_CLIENT')").checkTokenAccess(
-                    "hasAuthority('ROLE_TRUSTED_CLIENT')");
-        }</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">void</span> configure(AuthorizationServerSecurityConfigurer oauthServer) <span class="directive">throws</span> <span class="exception">Exception</span> {
+  oauthServer.tokenKeyAccess(<span class="string"><span class="delimiter">&quot;</span><span class="content">isAnonymous() || hasAuthority('ROLE_TRUSTED_CLIENT')</span><span class="delimiter">&quot;</span></span>)
+    .checkTokenAccess(<span class="string"><span class="delimiter">&quot;</span><span class="content">hasAuthority('ROLE_TRUSTED_CLIENT')</span><span class="delimiter">&quot;</span></span>);
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -532,12 +532,12 @@ JDBC  서비스의 스키마는 라이브러리에 패키징되어 있지 않다
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@Autowired
-private OAuth2ClientContext oauth2Context;
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Autowired</span>
+<span class="directive">private</span> OAuth2ClientContext oauth2Context;
 
-@Bean
-public OAuth2RestTemplate sparklrRestTemplate() {
-    return new OAuth2RestTemplate(sparklr(), oauth2Context);
+<span class="annotation">@Bean</span>
+<span class="directive">public</span> OAuth2RestTemplate sparklrRestTemplate() {
+    <span class="keyword">return</span> <span class="keyword">new</span> OAuth2RestTemplate(sparklr(), oauth2Context);
 }</code></pre>
 </div>
 </div>
@@ -564,13 +564,13 @@ public OAuth2RestTemplate sparklrRestTemplate() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">@Bean
-@Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
-public OAuth2RestOperations restTemplate() {
-    OAuth2RestTemplate template = new OAuth2RestTemplate(resource(), new DefaultOAuth2ClientContext(accessTokenRequest));
-    AccessTokenProviderChain provider = new AccessTokenProviderChain(Arrays.asList(new AuthorizationCodeAccessTokenProvider()));
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Bean</span>
+<span class="annotation">@Scope</span>(value = <span class="string"><span class="delimiter">&quot;</span><span class="content">session</span><span class="delimiter">&quot;</span></span>, proxyMode = ScopedProxyMode.INTERFACES)
+<span class="directive">public</span> OAuth2RestOperations restTemplate() {
+    OAuth2RestTemplate template = <span class="keyword">new</span> OAuth2RestTemplate(resource(), <span class="keyword">new</span> DefaultOAuth2ClientContext(accessTokenRequest));
+    AccessTokenProviderChain provider = <span class="keyword">new</span> AccessTokenProviderChain(<span class="predefined-type">Arrays</span>.asList(<span class="keyword">new</span> AuthorizationCodeAccessTokenProvider()));
     provider.setClientTokenServices(clientTokenServices());
-    return template;
+    <span class="keyword">return</span> template;
 }</code></pre>
 </div>
 </div>
@@ -606,7 +606,7 @@ public OAuth2RestOperations restTemplate() {
 <div id="footer">
 <div id="footer-text">
 Version 1.0<br>
-Last updated 2016-01-26 00:34:04 KST
+Last updated 2016-01-26 02:10:14 KST
 </div>
 </div>
 <!-- GA -->

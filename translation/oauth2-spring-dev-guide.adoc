@@ -1,9 +1,10 @@
-= OAuth 2 개발자 가이드 
+= OAuth 2 개발자 가이드
 Chanwook Park <chanwook.god@gmail.com>
 :revnumber: 1.0
 :revdate: 2016-01-26
 :toc:
 :icons: font
+:source-highlighter: coderay
 
 > 이 글은 Spring 공식 사이트에서 제공하는 http://projects.spring.io/spring-security-oauth/docs/oauth2.html[OAuth2 Developers Guide]를 번역한 글입니다.
 > 이 글과 함께 제공하는 https://github.com/spring-projects/spring-security-oauth/tree/master/samples/oauth2/tonr[샘플코드]를 보시면 좀더 많은 도움이 받을 수 있습니다.
@@ -109,13 +110,13 @@ WARNING: 인가 엔드포인트 /oauth/authorize (또는 대채된 매핑 경로
 
 [source,java]
 ----
-   @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests().antMatchers("/login").permitAll().and()
-        // default protection for all resources (including /oauth/authorize)
-            .authorizeRequests().anyRequest().hasRole("USER")
-        // ... more configuration, e.g. for form login
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+  http
+    .authorizeRequests().antMatchers("/login").permitAll().and()
+      // default protection for all resources (including /oauth/authorize)
+    .authorizeRequests().anyRequest().hasRole("USER")
+      // ... more configuration, e.g. for form login
     }
 ----
 
@@ -171,11 +172,11 @@ ResourceServerTokenServices는 인가 서버와의 계약(contract)에 따라 �
 
 [source,java]
 ----
-        @Override
-        public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-            oauthServer.tokenKeyAccess("isAnonymous() || hasAuthority('ROLE_TRUSTED_CLIENT')").checkTokenAccess(
-                    "hasAuthority('ROLE_TRUSTED_CLIENT')");
-        }
+@Override
+public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+  oauthServer.tokenKeyAccess("isAnonymous() || hasAuthority('ROLE_TRUSTED_CLIENT')")
+    .checkTokenAccess("hasAuthority('ROLE_TRUSTED_CLIENT')");
+}
 ----
 
 이 예에서는 /oauth/check_token 엔드포인트와 /oauth/token_key 엔드포인트를 둘 다 설정했다 (이렇게 해야 신뢰하는 리소스가 JWT 검증을 거친 공개키를 얻을 수 있다). 이 두 엔드포인트는 클라이언트 증명서를 사용하는 HTTP Basic 인증을 통해 보호를 받는다.
