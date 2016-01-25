@@ -1,6 +1,9 @@
-= OAuth 2 개발자 가이드 (번역)
+= OAuth 2 개발자 가이드 
 Chanwook Park <chanwook.god@gmail.com>
-v1.0, 2016-01-25
+:revnumber: 1.0
+:revdate: 2016-01-26
+:toc:
+:icons: font
 
 > 이 글은 Spring 공식 사이트에서 제공하는 http://projects.spring.io/spring-security-oauth/docs/oauth2.html[OAuth2 Developers Guide]를 번역한 글입니다.
 > 이 글과 함께 제공하는 https://github.com/spring-projects/spring-security-oauth/tree/master/samples/oauth2/tonr[샘플코드]를 보시면 좀더 많은 도움이 받을 수 있습니다.
@@ -10,7 +13,7 @@ v1.0, 2016-01-25
 
 이 가이드는 https://tools.ietf.org/html/draft-ietf-oauth-v2-31[OAuth 2.0]을 지원하는 사용자 가이드다. OAuth 1.0과는 완전히 다르기 때문에 1.0을 사용할 때는 http://projects.spring.io/spring-security-oauth/docs/oauth1.html[링크된 다른 사용자 가이드]를 참조하자.
 
-이번 사용자 가이드는 두 부분으로 나뉜다. 첫 번째는 OAuth 2.0 프로바이더(Provider)를 다루며, 두 번째는 OAuth 2.0 클라이언트(Client)를 다룬다. 프로바이더와 클라이언트를 둘 다 포함하는 최고의 샘플 코드 소스는 [통합 테스트](https://github.com/spring-projects/spring-security-oauth/tree/master/tests)와 [샘플 애플리케이션](https://github.com/spring-projects/spring-security-oauth/tree/master/samples/oauth2)를 참고하자.
+이번 사용자 가이드는 두 부분으로 나뉜다. 첫 번째는 OAuth 2.0 프로바이더(Provider)를 다루며, 두 번째는 OAuth 2.0 클라이언트(Client)를 다룬다. 프로바이더와 클라이언트를 둘 다 포함하는 최고의 샘플 코드 소스는 https://github.com/spring-projects/spring-security-oauth/tree/master/tests[통합 테스트]와 https://github.com/spring-projects/spring-security-oauth/tree/master/samples/oauth2[샘플 애플리케이션]를 참고하자.
 
 == OAuth 2.0 프로바이더
 
@@ -72,7 +75,7 @@ AuthorizationServerTokenServices 구현체를 생성할 때 DefaultTokenServices
 
 - 저장소의 http://projects.spring.io/spring-security-oauth/docs/%60JwtTokenStore%60[JSON 웹 토큰(JSON Web Token, JWT) 버전]은 토큰 자체에 허가 데이터 전부를 암호화한다 (그래서 토큰을 다시 돌려보내거나 저장하지 않아도 되는 점이 가장 큰 장점이다). 한 가지 단점은 액세스 토큰을 쉽게 파기할 수 없다는 점인데, 그래서 보통 짧은 만료기한으로 허가를 하며, 토큰을 갱신하면서 파기 해버린다. 또 다른 단점은 토큰에 사용자 자격증명 정보를 많이 저장하면 토큰이 상당히 커질 수 있다는 점이다. 실제로 JwtTokenStore는 말그대로의 "저장소"는 아니다. 데이터를 영속화 하지 않기 때문이다. 하지만 JwtTokenStore는 DefaultTokenServices에서 토큰 값과 인증 정보 사이의 변환을 하는 역할은 동일하게 수행한다.
 
-NOTE: JDBC  서비스의 스키마는 라이브러리에 패키징되어 있지 않다 (실전에서 사용할 때는 수많은 변화가 있기 때문이다). 그렇지만 예제에 나오는 [깃헙의 테스트코드](https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql)에서 시작할 수는 있다. 토큰을 생성할 때 클라이언트 앱이 동일한 행(row)을 완료하는 사이에 발생하는 충돌을 예방하기 위한 @EnableTransactionManagement을 선언했는지 확인하자. 또한 샘플 스키마는 명확하게 PRIMARY KEY 선언했음을 기억하자. 이 선언은 동시성 처리 환경에서 역시 필요하다.
+NOTE: JDBC  서비스의 스키마는 라이브러리에 패키징되어 있지 않다 (실전에서 사용할 때는 수많은 변화가 있기 때문이다). 그렇지만 예제에 나오는 https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql[깃헙의 테스트코드]에서 시작할 수는 있다. 토큰을 생성할 때 클라이언트 앱이 동일한 행(row)을 완료하는 사이에 발생하는 충돌을 예방하기 위한 @EnableTransactionManagement을 선언했는지 확인하자. 또한 샘플 스키마는 명확하게 PRIMARY KEY 선언했음을 기억하자. 이 선언은 동시성 처리 환경에서 역시 필요하다.
 
 === JWT 토큰
 
