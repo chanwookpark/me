@@ -9,6 +9,8 @@ Chanwook Park <chanwook.god@gmail.com>
 > 이 글은 Spring 공식 사이트에서 제공하는 http://projects.spring.io/spring-security-oauth/docs/oauth2.html[OAuth2 Developers Guide]를 번역한 글입니다.
 > 이 글과 함께 제공하는 https://github.com/spring-projects/spring-security-oauth/tree/master/samples/oauth2/tonr[샘플코드]를 보시면 좀더 많은 도움이 받을 수 있습니다.
 > 최신 스프링 부트와 연계한 샘플이 필요하시면 제 개인 깃헙에 올려 놓은 https://github.com/chanwookpark/openapi-bank[샘플코드]를 참고해보세요.
+> 이번 글에는 유사한 뜻으로 해석되는 용어가 상당히 많아 번역할 때도 힘들었지만 읽는 독자도 난해하거나 원문과 다르다 생각할지도 모르겠다. https://github.com/chanwookpark/me/blob/master/translation/translation-map-kr%2Ben.md[번역할 때 선택한 용어]는 별도로 정리해두었으니 용어가 맞는지 확인하고 싶을 때는 참고해보세요.
+> 오탈자 및 논의와 의견은 언제든지 환영입니다. 감사합니다.
 
 == 소개
 

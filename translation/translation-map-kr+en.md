@@ -10,7 +10,9 @@
 | Encoding, Decoding | 암호화, 복호화 | | |
 
 # OAuth 관련 용어
+
 | English  | Korean  |  Note |
+| :------------ |:------------  | :---------------- |
 | Provider | 프로바이더 | 공급자, 제공자 등의 한글 표현을 사용하려다가 client를 클라이언트로 번역하는 것과 쌍을 맞추고자 프로바이더로 번역함. 구글 검색 결과도 가장 많고.. |
 | Client | 클라이언트 | |
 | protected resources | 보호 리소스 | |
