@@ -7,6 +7,7 @@
 | Mechanism | 메커니즘 | | http://krdic.naver.com/detail.nhn?docid=13298600 |
 | Configuration | 구성 | | '설정'으로 편하게 사용하려다가 [네이버 지식인](http://kin.naver.com/openkr/detail.nhn?docId=23054)을 보고(?) 구성으로 가기로.. |
 | Configurer | 구성자 | | |
+| Encoding, Decoding | 암호화, 복호화 | | |
 
 # OAuth 관련 용어
 | English  | Korean  |  Note |
@@ -25,3 +26,5 @@
 | scope | 범위 | |
 | revoke | 파기하다 | |
 | credential | 자격증명 | https://developers.google.com/youtube/registering_an_application?hl=ko |
+| symmetric key | 대칭키 | 네이버 사전.. |
+| credentials | 증명, 증명서 | 네이버 사전.. |
